@@ -2,9 +2,14 @@ name: Github Actions Demo
 on:
     push:
         branches: [main]
+        paths:
+            - index.html
 jobs:
-    Echo-Hello-World:
+    Github-Actions-Deploy:
         runs-on: ubuntu-latest
         steps:
-            - name: Echo Hello World
-              run: echo "Hello World"
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Deploy website
+              uses: actions/deploy-pages@v4
